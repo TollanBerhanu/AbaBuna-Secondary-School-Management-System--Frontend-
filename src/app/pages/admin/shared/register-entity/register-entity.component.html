@@ -1,0 +1,351 @@
+<div class="card-body">
+    <div *ngIf="isLoading" style="text-align: center;">
+        <app-loading></app-loading>
+    </div>
+    <div *ngIf="showSuccessMessage" class="{{(success)? 'success' : 'failed'}}">
+        {{ successMessage }}
+    </div>
+    <form (ngSubmit)="onSubmit()" [formGroup]="uploadForm"> <!--*ngIf="!isLoading && !showSuccessMessage"-->
+    <!-- For both Teacher and Student -->
+    <div *ngIf="teacher || student">
+        <div class="card-header">
+        <h5 class="card-title">Personal Information</h5>
+        </div>
+        <div class="row">
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+            <label>First Name <span class="req"></span></label>
+            <input type="text" class="form-control" placeholder="First Name" formControlName="firstname" minlength="2" required #firstname>
+            <span class="help-block" *ngIf="(firstname.invalid && firstname.touched) || submitted">{{ helpMessage(firstname, 'First name') }}</span>
+            </div>
+        </div>
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+            <label>Middle Name <span class="req"></span></label>
+            <input type="text" class="form-control" placeholder="Middle Name" formControlName="middlename" minlength="2" required #middlename>
+            <span class="help-block" *ngIf="(middlename.invalid && middlename.touched) || submitted">{{ helpMessage(middlename, 'Middle name') }}</span>
+            </div>
+        </div>
+        <div class="col-md-3 pl-1">
+            <div class="form-group">
+            <label>Last Name <span class="req"></span></label>
+            <input type="text" class="form-control" placeholder="Last Name" formControlName="lastname" minlength="2" required #lastname>
+            <span class="help-block" *ngIf="(lastname.invalid && lastname.touched) || submitted">{{ helpMessage(lastname, 'Last name') }}</span>
+            </div>
+        </div>
+        <div class="col-md-3 pl-1 upload-profile-pic">
+        <input type="file" class="upload_photo" (change)="onPhotoChanged($event)" #uploadedImage>
+        <img [src]="imgURL" class="profile-pic" alt="Teaacher's Photo" accept="image/gif, image/jpeg, image/jpg, image/png, image/ico">
+        <span class="img_overlay">Upload Photo</span>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 pr-1">
+            <label class="form-label">Gender <span class="req"></span></label>
+            <div class="form-check" *ngFor="let gender of genders">
+                <input type="radio" class="form-check-input" id="{{gender}}" value="{{gender}}" formControlName="gender" required [ngModel]="'M'">   
+                <label for="{{gender}}">{{(gender == 'M')? 'Male' : 'Female' }}</label>
+                <!-- {{(gender == 'M')? 'Male' : 'Female' }} -->
+            </div>
+        </div>
+         <!--<div class="col-md-4 pl-1">
+            <div class="form-group">
+            <label>Date of Birth</label>
+            <input type="date" class="form-control">
+            <input type="date" class="form-control" formControlName="dob"> 
+            </div>
+        </div>-->
+        </div>
+        <div class="row">
+        <div class="col-md-5 pr-1">
+            <div class="form-group">
+            <label>Phone Number <span class="req"></span></label>
+            <input type="text" class="form-control" placeholder="Phone Number" formControlName="phoneno" required>
+            </div>
+        </div>
+        </div>
+        <div class="row" *ngIf="student">
+        <label class="form-label">Guardian Information</label>
+        <div class="col-md-5 pr-1">
+            <div class="form-group">
+            <!-- <label>Name</label> -->
+            <input type="text" class="form-control" placeholder="Name" formControlName="emergencyname">
+            </div>
+        </div>
+        <div class="col-md-5 px-1">
+            <div class="form-group">
+            <!-- <label>Phone Number</label> -->
+            <input type="text" class="form-control" placeholder="Phone Number" formControlName="emergencyphone">
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- For teacher and student -->
+    <div *ngIf="teacher || student">
+        <div class="card-header">
+            <h5 class="card-title">Address Information</h5>
+        </div>
+        
+        <div class="row">
+            <div class="col-md-5 pr-1">
+                <div class="form-group">
+                <label>Country <span class="req"></span></label>
+                <input type="text" class="form-control" placeholder="Country" formControlName="country" required>
+                </div>
+            </div>
+            <div class="col-md-5 pl-1">
+                <div class="form-group">
+                <label>City <span class="req"></span></label>
+                <input type="text" class="form-control" placeholder="City" formControlName="city" required #city>
+                <span class="help-block" *ngIf="city.invalid && city.touched">{{ helpMessage(city, 'City') }}</span>
+            </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-5 pr-1">
+                <div class="form-group">
+                <label>Kebele <span class="req"></span></label>
+                <input type="text" class="form-control" placeholder="Kebele" formControlName="kebele" required #kebele>
+                <span class="help-block" *ngIf="kebele.invalid && kebele.touched">{{ helpMessage(kebele, 'Kebele') }}</span>
+                </div>
+            </div>
+            <div class="col-md-5 pl-1">
+                <div class="form-group">
+                <label>House Number <span class="req"></span></label>
+                <input type="text" class="form-control" placeholder="House No" formControlName="houseno" required #houseno>
+                <span class="help-block" *ngIf="houseno.invalid && houseno.touched">{{ helpMessage(houseno, 'House No') }}</span>
+            </div>
+            </div>
+        </div>
+    </div>
+    <!-- Only for Teacher -->
+    <div *ngIf="false">
+        <div class="card-header">
+            <h5 class="card-title">Occupation Information</h5>
+        </div>
+        <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+            <label>Subject to Teach <span class="req"></span></label>
+            <select class="form-control" formControlName="subject" [ngModel]="'na'">
+                <option value="na">N/A</option>
+                <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+            </select>
+            </div>
+        </div>
+        </div>
+        
+        <div class="row">
+        <div class="col-md-5">
+            <div class="form-group">
+            <label>Classes to Teach <span class="req"></span></label>
+            <select class="form-control" formControlName="classes" size="5" multiple="true"  [ngModel]="'none'">
+                <option value="none">None</option>
+                <option *ngFor="let class of classes" [value]="class.class + class.section">{{ class.class + class.section }}</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-md-5">
+            <div class="form-group">
+            <label>Homeroom <span class="req"></span></label>
+            <select class="form-control" formControlName="homeroom" [ngModel]="'none'">
+                <option value="none">None</option>
+                <option *ngFor="let class of classes" [value]="class.class + class.section">{{ class.class + class.section }}</option>
+            </select>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Only for Student -->
+    <div *ngIf="student">
+        <div class="card-header">
+            <h5 class="card-title">Academic Information</h5>
+        </div>
+        <div class="row">
+        <!-- <div class="col-md-4 pr-1">
+            <div class="form-group">
+            <label>Academic Year</label>
+            <input type="number" class="form-control">
+            </div>
+        </div> -->
+
+        <!-- <div class="col-md-4 pr-1">
+            <label class="form-label">Current Grade <span class="req"></span></label>
+            <div class="form-check" *ngFor="let grade of [9, 10]">
+                <input type="radio" class="form-check-input" id="{{'cg_'+grade}}" value="{{grade}}" formControlName="grade" required [ngModel]="9">   
+                <label for="{{'cg_'+grade}}">Grade {{grade}}</label>
+            </div>
+        </div> -->
+
+        <div class="col-md-4 pr-1">
+            <label class="form-label">Current Grade</label><br>
+            <div class="form-check" *ngFor="let grade of grades">
+                <input type="radio" class="form-check-input" [id]="'cg_'+grade" formControlName="grade" [value]="grade" required [ngModel]="9">   
+                <!-- <label for="{{'cg_'+grade}}">Grade {{grade}}</label> -->
+                Grade {{grade}}
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- For both Teacher and Student -->
+    <div *ngIf="teacher || student">
+        <div class="card-header">
+            <h5 class="card-title">Authentication</h5>
+        </div>
+        <div class="row">
+            <div class="col-md-5 pl-1">
+                <div class="form-group">
+                <label>Email <span class="req"></span></label>
+                <input type="email" class="form-control" placeholder="Email" formControlName="email" email required #email>
+                <span class="help-block" *ngIf="email.invalid && email.touched">{{ helpMessage(email, 'Email') }}</span>
+            </div>
+            </div>
+            <div class="col-md-5 pl-1">
+                <div class="form-group">
+                <label>Password <span class="req"></span></label>
+                <input type="text" class="form-control" placeholder="Password" formControlName="password" required>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Only for Subject -->
+    <div *ngIf="subject">
+        <div class="card-header">
+        <h5 class="card-title">Subject Details</h5>
+        </div>
+        <div class="row">
+        <div class="col-md-4 pr-1">
+            <div class="form-group">
+            <label>Subject's Name</label>
+            <input type="text" class="form-control" placeholder="Name of Subject" formControlName="subjectname" required>
+            </div>
+        </div>
+        <div class="col-md-4 pr-1">
+            <div class="form-group">
+            <label>Subject's Code</label>
+            <input type="text" class="form-control" placeholder="Subject's Code" formControlName="subjectcode" required>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-4 pr-1">
+            <label>Common Grades</label><br>
+            <input type="checkbox" class="form-check-input" id="common" formControlName="common" #common (change)="toggleGrades()" ngModel="true">
+            <label for="common" style="font-size: 13px; color: #333;">Common For All Grades</label>
+        </div>
+        <div class="col-md-4 pr-1" [ngClass]="{hideGrades: !toggleGrade}">
+            <label class="form-label">Grade Given To</label><br>
+                <input type="radio" class="form-check-input" id="subnine" value="9" name="gradegiven" formControlName="gradegiven" #subjectnine ngModel="9">   
+                <label for="subnine">Grade 9</label>
+                <input type="radio" class="form-check-input" id="subten" value="10" name="gradegiven" formControlName="gradegiven" #subjectten>
+                <label for="subten">Grade 10</label>
+                <input type="radio" class="form-check-input" id="subeleven" value="11" name="gradegiven" formControlName="gradegiven" #subjecteleven>
+                <label for="subeleven">Grade 11</label>
+                <input type="radio" class="form-check-input" id="subtwelve" value="12" name="gradegiven" formControlName="gradegiven" #subjecttwelve>
+                <label for="subtwelve">Grade 12</label>
+        </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4 pr-1">
+                <div class="form-group">
+                <label>Classes Per Week</label>
+                <input type="number" class="form-control" placeholder="Class per week" formControlName="classperweek" required>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+            <label class="form-label">Subject Description</label>
+            <textarea class="form-control textarea" placeholder="Short Description of Subject ..."></textarea>
+            </div>
+        </div>
+        </div>
+    </div>
+    <!-- Only for Class -->
+    <div *ngIf="class">
+        <div class="card-header">
+        <h5 class="card-title">Classroom Details</h5>
+        </div>
+        <div class="row">
+        <div class="col-md-4 pr-1">
+            <label class="form-label">Grade</label><br>
+            <div class="form-check" *ngFor="let class of grades; let i = index">
+                <input type="radio" class="form-check-input" [id]="'class'+class" formControlName="class" [value]="class" required checked="{{i==0}}">   
+                <label for="{{'class'+class}}">Grade {{class}}</label>
+            </div>
+        </div>
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+            <label>Section</label>
+            <select class="form-control" formControlName="section" size="5">
+                <option *ngFor="let section of sections" [value]="section">{{ section }}</option>
+            </select>
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+            <label class="form-label">Class Description</label>
+            <textarea class="form-control textarea" placeholder="Short Description of the Class ..."></textarea>
+            </div>
+        </div>
+        </div>
+    </div>
+        <!--<div class="row">
+        <div class="col-md-4 pr-1">
+            <div class="form-group">
+            <label>City</label>
+            <input type="text" class="form-control" placeholder="City">
+            </div>
+        </div>
+        <div class="col-md-4 px-1">
+            <div class="form-group">
+            <label>Country</label>
+            <input type="text" class="form-control" placeholder="Country">
+            </div>
+        </div>
+        <div class="col-md-4 pl-1">
+            <div class="form-group">
+            <label>Postal Code</label>
+            <input type="number" class="form-control" placeholder="ZIP Code">
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-5 pr-1">
+            <div class="form-group">
+            <label>Company (disabled)</label>
+            <input type="text" class="form-control" disabled="" placeholder="Company">
+            </div>
+        </div>
+        <div class="col-md-3 px-1">
+            <div class="form-group">
+            <label>Username</label>
+            <input type="text" class="form-control" placeholder="Username">
+            </div>
+        </div>
+        <div class="col-md-4 pl-1">
+            <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" class="form-control" placeholder="Email">
+            </div>
+        </div>
+        </div>
+        <div class="row">
+        <div class="col-md-12">
+            <div class="form-group">
+            <label>About Me</label>
+            <textarea class="form-control textarea">Oh so, your weak rhyme You doubt I'll bother, reading into it</textarea>
+            </div>
+        </div>
+        </div>-->
+        <div class="row">
+        <div class="update ml-auto mr-auto">
+            <button type="submit" class="btn btn-primary btn-round">Save {{ (teacher||student)? 'Profile' : '' }}</button>
+            <button type="submit" class="btn btn-primary btn-round" [disabled]="uploadForm.invalid">Submit {{ (teacher||student)? 'Profile' : '' }}</button>
+        </div>
+        </div>
+    </form>
+    </div>

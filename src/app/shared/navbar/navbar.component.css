@@ -1,0 +1,38 @@
+.title{
+    margin-left: 3%;
+    font-size: 20px;
+}
+.welcome{
+    margin-right: 20%;
+    font-size: 16px;
+}
+.title-text{
+    text-transform: capitalize;
+}
+.logout{
+    text-align: right;
+    color: cyan !important;
+    cursor: pointer;
+    text-decoration: none;
+}
+.logout:hover{
+    text-decoration: underline;
+}
+.main-nav{
+    position: fixed; 
+    width: 100%;
+    z-index: 10;
+}
+.admin{
+    background-color: rgb(141, 104, 76) !important; 
+    color: white;
+}
+.teacher{
+    /* background-color: rgb(109, 204, 187) !important;  */
+    background-color: rgb(128, 155, 223) !important; 
+    color: white;
+}
+.student{
+    background-color: rgb(111, 196, 118) !important; 
+    color: white;
+}

@@ -1,0 +1,176 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+
+            <div class="card-body" *ngIf="!dispTrans">
+                <div class="row">
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Full Name</th>
+                            <th scope="col">Email</th>
+                            <th scope="col"></th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <tr *ngFor="let student of myStudents; let i = index">
+                            <th scope="row">{{i+1}}</th>
+                            <td>{{student.student.first_name + ' ' + student.student.middle_name + ' ' + student.student.last_name}}</td>
+                            <td>{{student.student.email}}</td>
+                            <td><button class="btn btn-success" (click)="generateTranscript(student)">Generate Transcript</button></td>
+                          </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-body" id="transcript" *ngIf="dispTrans">
+                <div class="row">
+                    <div class="col-md-12">
+                        <img src="./assets/img/ababunalogo.png" class="logo">
+                        <h2>Aba Buna Secondary School</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h2>Jimma, Ethiopia</h2>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                        <h3>Tel: +251-471-123-682</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <h3>PO Box: 45678</h3>
+                    </div>
+                    <div class="col-md-4">
+                        <img [src]="root+''+student.student.profile" alt="Photo" class="propic">
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <h3>Email: ababunajimma@gmail.com</h3>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-5">
+                        <h4>Name: {{ student.student.first_name + ' ' + student.student.middle_name + ' ' + student.student.last_name}}</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <h4>Sex: {{student.student.sex}}</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <!-- <h4>Year of admission: 2013 EC</h4> -->
+                    </div>
+                </div>
+                
+                
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col" rowspan="2">Subject</th>
+                        <th scope="col" colspan="3">Grade {{student.grade}}</th>
+                      </tr>
+                      <tr>
+                        <th class="bl">Semester I</th>
+                        <th>Semester II</th>
+                        <th>Average</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+
+
+                      <tr *ngFor="let subject of subjects">
+                        <th scope="row">{{subject['subject']}}</th>
+                        <td>{{subject[1]}}</td>
+                        <td>{{subject[2]}}</td>
+                        <td>{{subject['avg']}}</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Total</th>
+                        <td>{{student.scores[0].total}}</td>
+                        <td>{{student.scores[1].total}}</td>
+                        <td>{{student.total}}</td>
+                      </tr>
+                      
+                      <tr>
+                        <th scope="row">Average</th>
+                        <td>{{student.scores[0].average}}</td>
+                        <td>{{student.scores[1].average}}</td>
+                        <td>{{student.average}}</td>
+                      </tr>
+                    
+                      <tr>
+                        <th scope="row">Absence</th>
+                        <td>{{student.scores[0].absence}}</td>
+                        <td>{{student.scores[1].absence}}</td>
+                        <td>{{student.absence}}</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Conduct</th>
+                        <td>{{student.scores[0].conduct}}</td>
+                        <td>{{student.scores[1].conduct}}</td>
+                        <td>{{student.conduct}}</td>
+                      </tr>
+
+                      <tr>
+                        <th scope="row">Rank</th>
+                        <td>{{student.scores[0].rank}}</td>
+                        <td>{{student.scores[1].rank}}</td>
+                        <td>{{student.rank}}</td>
+                      </tr>
+                    </tbody>
+                  </table>
+
+                  <div class="row">
+                      <div class="col-md-5">
+                          <h4>Date of Issue: 11-11-11</h4>
+                      </div>
+                  </div>
+
+                  <div class="row center">
+                    <div class="col-md-4">
+                        <h4>Homeroom Teacher</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>School Seal</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Director</h4>
+                    </div>
+                  </div>
+                  <div class="row center">
+                    <div class="col-md-4">
+                        <h4>________________________</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>________________________</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>________________________</h4>
+                    </div>
+                  </div>
+                  
+                  <div class="row center">
+                    <div class="col-md-4">
+                        <h4>Homeroom's Name</h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4></h4>
+                    </div>
+                    <div class="col-md-4">
+                        <h4>Director's Name</h4>
+                    </div>
+                  </div>
+
+            </div>
+            <button class="btn btn-danger export" (click)="exportHtmlToPDF()" *ngIf="dispTrans">
+                <i class="nc-icon nc-cloud-download-93"></i>&nbsp;
+                Export to PDF
+            </button>
+        </div>
+    </div>
+</div>

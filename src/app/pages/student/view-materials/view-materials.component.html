@@ -1,0 +1,39 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 col-sm-6" *ngFor="let post of posts">
+                      <div class="card card-stats">
+                        <div class="card-body ">
+                          <div class="row">
+                            <div class="col-5 col-md-4">
+                              <div class="icon-big text-center icon-warning">
+                                <i class="nc-icon nc-globe text-warning"></i>
+                                <!-- <img [src]="root+''+post.image" class="postimg"> -->
+                              </div>
+                            </div>
+                            <div class="col-7 col-md-8">
+                              <div class="numbers">
+                                  <br>
+                                <p class="card-category">Title</p>
+                                <p class="card-title">{{ post.title }}
+                                  <p>
+                              </div>
+                            </div>
+                            <p class="desc">{{ post.text }}</p>
+                          </div>
+                        </div>
+                        <div class="card-footer ">
+                          <hr>
+                          <div class="stats">
+                            <i class="fa fa-refresh"></i> Update Now
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    
+            </div>
+        </div>
+    </div>
+</div>

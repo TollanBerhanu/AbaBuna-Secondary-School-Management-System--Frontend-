@@ -1,0 +1,16 @@
+.label{
+    color: #222;
+    font-size: 13px;
+}
+.title-label{
+    font-weight: bold;
+}
+.btn-post{
+    width: 100%;
+}
+.btn-cancel{
+    width: 100%;
+}
+.center{
+    text-align: center;
+}

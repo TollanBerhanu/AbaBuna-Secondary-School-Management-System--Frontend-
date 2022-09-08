@@ -1,0 +1,23 @@
+<div class="sidebar-wrapper" [ngClass]="{admin: accountType=='admin', teacher: accountType=='teacher', student: accountType=='student'}">
+  <!-- <div class="sidebar-wrapper" style="background-color: rgb(100, 51, 28);"> -->
+  <div class="logo">
+    <a href="http://www.creative-tim.com" class="simple-text logo-mini">
+      <div class="logo-image-small">
+        <img src="assets/img/ababunalogo.png">
+      </div>
+    </a>
+    <a href="#" class="simple-text logo-normal">
+      Aba Buna School
+    </a>
+  </div>
+    <ul class="nav">
+     <li *ngFor="let menuItem of menuItems" routerLinkActive="active" class="{{menuItem.class}}">
+        <a [routerLink]="[menuItem.path]">
+            <i class="nc-icon {{menuItem.icon}}"></i>
+            <p>{{menuItem.title}}</p>
+            <!-- <p style="color: white;">{{menuItem.title}}</p> -->
+        </a>
+      </li> 
+    </ul>
+        
+</div>

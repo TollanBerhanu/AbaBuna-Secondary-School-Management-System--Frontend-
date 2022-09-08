@@ -1,0 +1,41 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+                
+                <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link active" id="pills-new-tab" data-bs-toggle="pill" data-bs-target="#pills-new" type="button" role="tab" aria-controls="pills-new" aria-selected="true" routerLink="new">New Practice Exam</button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                      <button class="nav-link" id="pills-edit-tab" data-bs-toggle="pill" data-bs-target="#pills-edit" type="button" role="tab" aria-controls="pills-edit" aria-selected="false" routerLink="edit">Existing Practice Exam</button>
+                    </li>
+                  </ul>
+                  <div class="tab-content" id="pills-tabContent">
+                    <div class="tab-pane fade show active" id="pills-new" role="tabpanel" aria-labelledby="pills-new-tab">
+                        
+                        <!-- <form (ngSubmit)="onSubmit()" #examForm="ngForm">
+                            <div class="row">
+                            <div class="col-md-10">
+                                <div class="form-group">
+                                    Name of Exam
+                                <input type="text" class="form-control choice-input" placeholder="Exam Name" name="examname" ngModel>
+                                </div>
+                            </div>  
+                            </div>
+                        </form> -->
+
+                    </div>
+                    <div class="tab-pane fade" id="pills-edit" role="tabpanel" aria-labelledby="pills-edit-tab">
+                        Edit
+                    </div>
+                  </div>
+
+                  <router-outlet></router-outlet>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+        

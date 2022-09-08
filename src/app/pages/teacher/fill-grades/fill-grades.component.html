@@ -1,0 +1,98 @@
+<div *ngIf="isMainLoading" style="text-align: center; margin-top: 25%;">
+  <app-loading></app-loading>
+</div>
+<div id="accordion" class="accordion">
+  <div class="card" *ngFor="let class of classes; let i = index">
+    <!-- Accordion Head -->
+    <div class="card-header">
+      <a class="collapsed accordion-head" data-toggle="collapse" (click)="toggleAccordion(i)">  
+        
+        <h4 class="accord_Head">Class: {{ class }}</h4>
+
+      </a>
+    </div>
+
+    <!-- Accordion Body -->
+    <div class="collapse" [ngClass]="{show: i == accordion}" data-parent="#accordion">
+      <div class="card-body">
+
+                <div *ngIf="isLoading" style="text-align: center; margin: 40px;">
+                  <app-loading></app-loading>
+                </div>
+              <div class="card-body" *ngIf="!isLoading">
+                  <form  (ngSubmit)="onSubmit()" #markTable="ngForm">
+                  <table class="table">
+                      <thead class="thead-dark">
+                        <tr style="background-color: rgb(226, 237, 247);">
+                          <!-- <th scope="col" colspan="2" style="background-color: rgb(194, 224, 253);">SEMESTER {{sem+1}}</th> -->
+                          <th scope="col">#</th>
+                          <th scope="col" style="width: 190px;">Student</th>
+                          <th scope="col">Test 1 (10%)</th>
+                          <th scope="col">Test 2 (10%)</th>
+                          <th scope="col">Assignment (10%)</th>
+                          <th scope="col">Mid Exam (30%)</th>
+                          <th scope="col">Final Exam (40%)</th>
+                          <th scope="col">Total (100%)</th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>
+                         <!--<tr style="background-color: rgb(226, 237, 247);">
+                            Stored with Teacher _id in a dedicated collection 
+                          <th scope="col">#</th>
+                          <th scope="col" style="width: 190px;">Student</th>
+                          <th scope="col">/ 10<input type="number" class="form-control out-of" name="assignmentoutof" ngModel></th>
+                          <th scope="col">/ 10<input type="number" class="form-control out-of" name="quizoutof" ngModel></th>
+                          <th scope="col">/ 10<input type="number" class="form-control out-of" name="projectoutof" ngModel></th>
+                          <th scope="col">/ 30<input type="number" class="form-control out-of" name="midoutof" ngModel></th>
+                          <th scope="col">/ 40<input type="number" class="form-control out-of" name="finaloutof" ngModel></th>
+                          <th scope="col">/ 100 </th>
+                          <th scope="col"></th>
+                          <th scope="col"></th>
+                        </tr>-->
+                      </thead>
+                      <tbody>
+                          <!-- Grouped and stored with Student _id to make each row(marks) specific to one student -->
+                        <tr *ngFor="let st_stat of selectedClass; let i = index" [ngModelGroup]="i" [ngClass]="{dark_row: (i+1)%2==0}">
+                          <th scope="row">{{ i+1 }}</th>
+                          <th scope="row" style="width: 230px;">{{ st_stat.student.first_name + ' ' + st_stat.student.last_name }}</th>
+                          <td>
+                            <input type="number" class="form-control mark" [ngClass]="{error: selectedScores[i].test1 > 10}" name="test1" maxlength="2" [(ngModel)]="selectedScores[i].test1" #test1="ngModel"> 
+                          </td>
+                          <td>
+                            <input type="number" class="form-control mark" [ngClass]="{error: selectedScores[i].test2 > 10}" name="test2" maxlength="2" [(ngModel)]="selectedScores[i].test2" #test2="ngModel"> 
+                          </td>
+                          <td>
+                            <input type="number" class="form-control mark" [ngClass]="{error: selectedScores[i].assignment > 10}" name="assignment" maxlength="2" [(ngModel)]="selectedScores[i].assignment" #assignment="ngModel"> 
+                          </td>
+                          <td>
+                            <input type="number" class="form-control mark" [ngClass]="{error: selectedScores[i].mid > 30}" name="mid" maxlength="2" [(ngModel)]="selectedScores[i].mid" #mid="ngModel"> 
+                          </td>
+                          <td>
+                            <input type="number" class="form-control mark" [ngClass]="{error: selectedScores[i].final > 40}" name="final" maxlength="2" [(ngModel)]="selectedScores[i].final" #final="ngModel"> 
+                          </td>
+                          <td>
+                            <input type="number" class="form-control mark" name="total" disabled [(ngModel)]="selectedScores[i].test1 + selectedScores[i].test2 + selectedScores[i].assignment + selectedScores[i].mid + selectedScores[i].final" #total="ngModel"> 
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-primary row-submit" (click)="submitRow(st_stat, test1.value, test2.value, assignment.value, mid.value, final.value)">
+                            Submit 
+                            </button> 
+                          </td>
+                          <td>
+                            <button type="button" class="btn btn-primary row-submit">Complete</button> 
+                          </td>
+                        </tr>
+                      </tbody>
+                    </table>
+                     <!-- <button type="submit" class="btn btn-primary btn-round">Save</button> -->
+                    </form>
+              </div>
+          <!-- </div>
+      </div> -->
+
+
+        
+      </div>
+    </div>
+  </div>
+</div>

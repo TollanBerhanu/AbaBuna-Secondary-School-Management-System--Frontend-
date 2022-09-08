@@ -1,0 +1,23 @@
+input.out-of{
+    width: 70px;
+    display: inline;
+}
+input.mark{
+    width: 80px;
+}
+tr.dark_row{
+    background-color: #eee;
+}
+.row-submit{
+    padding: 8px 7px;
+    margin: 0;
+}
+.accord_Head{
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+    text-decoration: none;
+    cursor: pointer;
+}
+.error{
+    border: 1px solid red;
+}

@@ -1,0 +1,22 @@
+.show{
+    transition: 2s;
+}
+a.accordion-head{
+    text-decoration: none;
+    cursor: pointer;
+}
+a.accordion-head table:hover{
+    background-color: #eee;
+}
+table.profile-collapsed{
+    width: 100%;
+    margin: 20px;
+}
+td.profile-image{
+    width: 100px;
+}
+span.entity-info{
+    font-size: 15px;
+    font-style: italic ;
+    font-weight: bolder;
+}

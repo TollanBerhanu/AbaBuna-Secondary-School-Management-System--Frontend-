@@ -1,0 +1,12 @@
+.choice-label .choice-input{
+    display: inline;
+}
+.choice-label{
+    margin-left: 50px;
+    font-size: 15px;
+    /* color: #333; */
+    font-weight: bold;
+}
+.choice-input{
+    margin-left: 0;
+}

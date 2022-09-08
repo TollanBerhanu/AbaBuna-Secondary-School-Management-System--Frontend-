@@ -1,0 +1,91 @@
+<form (ngSubmit)="onSubmit()" #examForm="ngForm">
+    <div class="row">
+    <div class="col-md-6">
+        <div class="form-group">
+        <label class="question-label header-label">Exam Name:</label>  
+        <input type="text" class="form-control choice-input" placeholder="Exam Name" name="examname" [(ngModel)]="examname">
+        </div>
+    </div>  
+        <div class="col-md-4 pr-1">
+            <label class="question-label header-label">Classes Given To:</label><br>
+            <div *ngFor="let cls of classes; let i = index">
+                <input type="checkbox" class="form-check-input classes" id="{{ cls }}" name="{{ cls }}" [(ngModel)]="selectedclass[i]">   
+                <label for="{{ cls }}">{{ cls }}</label><br>
+            </div>
+        </div>  
+    </div>
+    <hr>
+    <!-- <div *ngFor="let ques of exam; let i = index"> -->
+    <div>
+    <div class="row">
+    <div class="col-md-9">
+        <div class="form-group">
+        <label class="question-label">Question {{ i+1 }}</label>
+        <textarea class="form-control textarea" placeholder="Question ..." name="question" [(ngModel)]="exam[i].question" ></textarea>
+        </div>
+    </div>
+    <div class="col-md-2 pr-1">
+        <div class="form-group">
+        <label>Answer</label>
+        <select class="form-control" name="answer" [(ngModel)]="exam[i].answer">
+            <option value="A">A</option>
+            <option value="B">B</option>
+            <option value="C">C</option>
+            <option value="D">D</option>
+        </select>
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-1 pr-1">
+        <label class="choice-label">A. </label>
+    </div>
+    <div class="col-md-6 pr-1">
+        <div class="form-group">
+        <input type="text" class="form-control choice-input" placeholder="Choice A" name="choicea" minlength="2" [(ngModel)]="exam[i].choicea">
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-1 pr-1">
+        <label class="choice-label">B. </label>
+    </div>
+    <div class="col-md-6 pr-1">
+        <div class="form-group">
+        <input type="text" class="form-control choice-input" placeholder="Choice B " name="choiceb" minlength="2" [(ngModel)]="exam[i].choiceb">
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-1 pr-1">
+        <label class="choice-label">C. </label>
+    </div>
+    <div class="col-md-6 pr-1">
+        <div class="form-group">
+        <input type="text" class="form-control choice-input" placeholder="Choice C " name="choicec" minlength="2" [(ngModel)]="exam[i].choicec">
+        </div>
+    </div>
+    </div>
+    <div class="row">
+    <div class="col-md-1 pr-1">
+        <label class="choice-label">D. </label>
+    </div>
+    <div class="col-md-6 pr-1">
+        <div class="form-group">
+        <input type="text" class="form-control choice-input" placeholder="Choice D " name="choiced" minlength="2" required [(ngModel)]="exam[i].choiced">
+        </div>
+    </div>
+    </div>
+    </div>
+    <!-- <button type="button" class="btn btn-primary add-question prev" (click)="addQuestion()">Add Question</button> -->
+    <button type="button" class="btn btn-primary prev" (click)="previous()" [disabled]="i==0">Previous</button>
+    <button type="button" class="btn btn-primary next" (click)="next()" [disabled]="i+1 == exam.length">Next</button>
+    <br>
+    <button type="button" class="btn btn-primary add-question" (click)="addQuestion()">Add Question</button>
+    <br>
+    <button type="button" class="btn btn-danger delete-question" (click)="deleteQuestion()" [disabled]="exam.length==1">Delete Question</button>
+    <br>
+    <button type="button" class="btn btn-primary save-exam" (click)="save()">Save Exam</button>
+    <!-- <button type="submit" class="btn btn-primary btn-round">Submit</button> -->
+</form>
+

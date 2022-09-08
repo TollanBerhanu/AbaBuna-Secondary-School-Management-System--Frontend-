@@ -1,0 +1,50 @@
+.logo{
+    position: absolute;
+    height: 80px;
+    left: 26%
+}
+h2{
+    font-weight: bold;
+    color: #333;
+    font-size: 21px;
+    text-align: center;
+}
+h3{
+    font-style: italic;
+    font-size: 17px;
+}
+h4{
+    font-size: 18px;
+    color: #222;
+}
+thead th{
+    text-align: center;
+    border-top: 1px solid;
+}
+tbody td{
+    border-left: 1px solid;
+    border-right: 1px solid;
+    text-align: center;
+}
+.bl{
+    border-left: 1px solid;
+}
+.br{
+    border-right: 1px solid;
+}
+.center{
+    text-align: center;
+}
+.export{
+    font-size: 20px;
+    font-weight: bold;
+    width: 70%;
+    margin-left: 15%;
+}
+#transcript{
+    padding: 50px;
+}
+.propic{
+    position: absolute;
+    height: 160px;
+}

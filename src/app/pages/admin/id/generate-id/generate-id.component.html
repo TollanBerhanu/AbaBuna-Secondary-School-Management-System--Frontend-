@@ -1,0 +1,43 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+                <form>
+                    <div class="card-header">
+                    <h5 class="card-title">Generate Identification Card</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-4">
+                            <div class="form-group">
+                            <label>Filter By Classroom</label>
+                            <select class="form-control" (change)="onClassSelected(cls)" #cls>
+                                <option value=""></option>
+                                <option *ngFor="let class of classes" value="{{class.id}}">{{ class.grade + class.section }}</option>
+                            </select>
+                            </div>
+                        </div>
+                    </div>
+                </form> 
+                <br>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Full Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col"></th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr *ngFor="let student of selectedStudents; let i = index">
+                        <th scope="row">{{i+1}}</th>
+                        <td>{{student.first_name + ' ' + student.middle_name + ' ' + student.last_name}}</td>
+                        <td>{{student.email}}</td>
+                        <td><button class="btn btn-success" (click)="generateID(student)">Generate ID</button></td>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

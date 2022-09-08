@@ -1,0 +1,100 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+            <form #examForm="ngForm">
+                <div class="card-header">
+                <h5 class="card-title">Practice Exam</h5>
+                </div>
+                <div class="row">
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label class="question-label header-label">Select Subject</label>
+                    <select class="form-control" name="subject" (change)="getExams(selectedSubject.value)" #selectedSubject>
+                        <option>-</option>
+                        <option *ngFor="let subject of subjects" [value]="subject">{{ subject }}</option>
+                    </select>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="form-group">
+                    <label class="question-label header-label">Select Exam</label>
+                    <select class="form-control" name="examname" (change)="selectExam(selExam.value)" #selExam>
+                        <option>-</option>
+                        <option *ngFor="let exam of examData; let i = index" [value]="i">{{ exam.examname }}</option>
+                    </select>
+                    </div>
+                </div>
+                </div>
+                <hr>
+                <button type="button" class="btn btn-primary start-exam" *ngIf="!started && !isLoading" (click)="startExam()">Start Exam</button>
+                <div *ngIf="isLoading" style="text-align: center; margin: 40px;">
+                    <app-loading></app-loading>
+                </div>
+                <div *ngIf="started">
+                <div *ngFor="let exam of selectedExam; let i = index">
+                <div class="row">
+                <div class="col-md-9 question-block">
+                    <label class="question-label">Question {{i+1}}</label>
+                    <p class="question">{{ exam.question }}</p>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-1 pr-1">
+                    <label class="choice-label">A. </label>
+                </div>
+                <div class="col-md-6 pr-1">
+                    <!-- <label class="form-label">Gender <span class="req"></span></label> -->
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="A{{ i }}" value="A" name="answer{{i}}" required [(ngModel)]="myAnswers[i]">   
+                        <label for="A{{ i }}" id="Alabel{{ i }}" class="choice-answer-label">{{ exam.choicea }}</label>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-1 pr-1">
+                    <label class="choice-label">B. </label>
+                </div>
+                <div class="col-md-6 pr-1">
+                    <!-- <label class="form-label">Gender <span class="req"></span></label> -->
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="B{{ i }}" value="B" name="answer{{i}}" required [(ngModel)]="myAnswers[i]">   
+                        <label for="B{{ i }}" id="Blabel{{ i }}" class="choice-answer-label">{{ exam.choiceb }}</label>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-1 pr-1">
+                    <label class="choice-label">C. </label>
+                </div>
+                <div class="col-md-6 pr-1">
+                    <!-- <label class="form-label">Gender <span class="req"></span></label> -->
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="C{{ i }}" value="C" name="answer{{i}}" required [(ngModel)]="myAnswers[i]">   
+                        <label for="C{{ i }}" id="Clabel{{ i }}" class="choice-answer-label">{{ exam.choicec }}</label>
+                    </div>
+                </div>
+                </div>
+                <div class="row">
+                <div class="col-md-1 pr-1">
+                    <label class="choice-label">D. </label>
+                </div>
+                <div class="col-md-6 pr-1">
+                    <!-- <label class="form-label">Gender <span class="req"></span></label> -->
+                    <div class="form-check">
+                        <input type="radio" class="form-check-input" id="D{{ i }}" value="D" name="answer{{i}}" required [(ngModel)]="myAnswers[i]">   
+                        <label for="D{{ i }}" id="Dlabel{{ i }}" class="choice-answer-label">{{ exam.choiced }}</label>
+                    </div>
+                </div>
+                </div>
+                </div>
+                <button type="button" (click)="onSubmit()" class="btn btn-primary btn-round">Submit Answers</button>
+                <div class="score-message">
+                    <p>{{ scoreMessage }}</p>
+                </div>
+            </div>
+            </form>
+            </div>
+        </div>
+    </div>
+</div>

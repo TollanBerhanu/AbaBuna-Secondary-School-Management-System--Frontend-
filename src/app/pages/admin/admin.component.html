@@ -1,0 +1,12 @@
+<div>
+    <ul class="nav nav-tabs">
+        <li class="nav-item" *ngFor="let link of dashboard">
+            <a class="nav-link dashboard-link" [routerLink]="link.path" routerLinkActive="active">{{ link.title }}</a>
+        </li>
+    </ul>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <router-outlet></router-outlet>
+        </div>
+    </div>
+</div>

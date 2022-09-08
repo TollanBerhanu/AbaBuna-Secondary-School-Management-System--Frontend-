@@ -1,0 +1,29 @@
+<div class="wrapper">
+  <lib-toastify-toast-container
+  [position]="'top-right'"
+  ></lib-toastify-toast-container>
+  <form class="login" (ngSubmit)="onSubmit()" [formGroup]="loginForm">
+    <p class="title">Log in</p>
+    <!-- <select class="form-control" name="account_type">
+      <option value="admin">Administrator</option>
+      <option value="teacher">Teacher</option>
+      <option value="student">Student</option>
+    </select> -->
+    <ul class="tab">
+      <li (click)="changeAccType('admin')" [ngClass]="{active: accType=='admin'}">Admin</li>
+      <li (click)="changeAccType('teacher')" [ngClass]="{active: accType=='teacher'}">Teacher</li>
+      <li (click)="changeAccType('student')" [ngClass]="{active: accType=='student'}">Student</li>
+    </ul>
+    <input type="text" placeholder="Username" autofocus autocomplete="false" formControlName="email" [ngClass]="{red: log}" required/>
+    <i class="fa fa-user"></i>  
+    <input type="password" placeholder="Password" formControlName="password" [ngClass]="{red: log}" required/>
+    <i class="fa fa-key"></i>
+    <p *ngIf="log" style="color: red;">Invalid Credentials!</p>
+    <!-- <a href="#">Forgot your password?</a> -->
+    <button type="submit">
+      <i class="spinner"></i>
+      <span class="state" (click)="loggedin()">Log in</span>
+    </button>
+  </form>
+  <!-- <footer><a target="blank" href="http://boudra.me/">boudra.me</a></footer> -->
+</div>

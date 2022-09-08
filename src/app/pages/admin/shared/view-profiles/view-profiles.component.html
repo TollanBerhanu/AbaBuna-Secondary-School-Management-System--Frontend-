@@ -1,0 +1,106 @@
+<div id="accordion" class="accordion">
+  <div class="card"  *ngFor="let entity of entities; let i = index">
+    <!-- Accordion Head -->
+    <div class="card-header">
+      <a class="collapsed accordion-head" data-toggle="collapse" (click)="toggleAccordion(i)">
+        
+        <table class="profile-collapsed table">
+          <tbody>
+            <!-- Only for teacher and student -->
+            <div *ngIf="teacher || student">
+              <tr>
+                <td rowspan="2" class="profile-image"><img [src]="rootUrl + entity.profile" alt="Photo" height="90" width="90"></td>
+                <td>Name: <span class="entity-info">{{ entity.first_name + ' ' + entity.last_name }}</span></td>
+              </tr>
+              <tr>
+                <td> <span class="entity-info">Gender: </span> {{ entity.sex }}</td>
+              <!-- <td *ngIf="teacher">Subject: <span class="entity-info">{{ entity.subject }}</span></td>
+                <td *ngIf="student">Class: <span class="entity-info">{{ entity.classroom }}</span></td> -->
+              </tr>
+            </div>
+            <!-- Only for class -->
+            <tr *ngIf="class">
+              <td style="width: 30%;"><span class="entity-info">Grade:</span> {{ entity.grade }} </td>
+              <td style="width: 30%;"><span class="entity-info">Section:</span> {{ entity.section }}</td>
+            </tr>
+          </tbody>
+        </table>
+
+      </a>
+    </div>
+
+    <!-- Accordion Body -->
+    <div class="collapse" [ngClass]="{show: i == accordion}" data-parent="#accordion">
+      <div class="card-body">
+
+        <table class="profile-collapsed table" *ngIf="teacher || student">
+          <tbody>
+            <tr>
+              <td colspan="2"> <span class="entity-info">Name: </span> {{entity.first_name + ' ' + entity.last_name}}</td>
+              <td colspan="2"> <span class="entity-info">Gender: </span> {{ entity.sex }}</td>
+              <!-- <td> <span class="entity-info">Age: </span> {{ entity.dob }} </td> -->
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="entity-info">Phone Number: </span> {{ entity.phone_num }}</td>
+              <td> <span class="entity-info">Email: </span> {{ entity.email }}</td>
+            </tr>
+            <!-- <tr *ngIf="student">
+              <td colspan="3"> <span class="entity-info">Emergency Contact</span></td>
+            </tr>
+            <tr *ngIf="student">
+              <td style="width: 33%;"> <span class="entity-info">Name: </span> {{ entity.emergencyname }}</td> 
+              <td style="width: 33%;"> <span class="entity-info">Phone: </span> {{ entity.emergencyphone }}</td>
+              <td style="width: 33%;"> <span class="entity-info">Relation: </span> {{ entity.emergencyname }}</td>
+            </tr> 
+
+          <div *ngIf="teacher">
+            <tr>
+              <td colspan="2"> <span class="entity-info">Subject: </span> {{ entity.subject }}</td>
+              <td> <span class="entity-info">Homeroom: </span> {{ entity.homeroom }}</td>
+            </tr>
+            <tr>
+              <td colspan="3"> <span class="entity-info">Profession: </span> {{ entity.degree + ' ' + entity.profession }}</td>
+            </tr>
+          </div>
+          <tr *ngIf="student">
+            <td colspan="2"> <span class="entity-info">Subject: </span> {{ entity.subject }}</td>
+            <td> <span class="entity-info">Classroom: </span> {{ entity.classroom }}</td>
+          </tr>-->
+          </tbody>
+        </table>
+
+        <table class="table" *ngIf="class">
+            <thead class="thead-dark">
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Student Name</th>
+                <th scope="col">Gender</th>
+                <th scope="col">Email</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let student of selectedStudents; let i = index">
+                <th scope="row">{{ i+1 }}</th>
+                <td>{{ student.first_name + ' ' + student.last_name }}</td>
+                <td>{{ student.sex }}</td>
+                <td>{{ student.email }}</td>
+              </tr>
+            </tbody>
+        </table>
+        <!-- For Subject Only -->
+        <table class="profile-collapsed table" *ngIf="subject">
+          <tbody>
+            <tr>
+              <td colspan="2"> <span class="entity-info">Subject Name: </span>{{entity._name}}</td>
+              <td colspan="2"> <span class="entity-info">Subject Code: </span> {{ entity.code }}</td>
+            </tr>
+            <tr>
+              <td colspan="2"> <span class="entity-info">Grade Given: </span> {{ entity.grade }}</td>
+              <td> <span class="entity-info">Class Per Week: </span> {{ entity.class_per_week }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

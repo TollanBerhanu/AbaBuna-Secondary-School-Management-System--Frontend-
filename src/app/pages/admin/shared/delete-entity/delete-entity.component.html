@@ -1,0 +1,78 @@
+<div class="card-body">
+    <form>
+        <div class="card-header">
+        <h5 class="card-title">Delete Entity</h5>
+        </div>
+        <div class="row">
+        <div class="col-md-3 pr-1">
+            <div class="form-group">
+            <label>First Name</label>
+            <input type="text" class="form-control" placeholder="First Name">
+            </div>
+        </div>
+        <div class="col-md-3 pl-1">
+            <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" class="form-control" placeholder="Last Name">
+            </div>
+        </div>
+        <div class="col-md-1 pl-1">
+            <div class="form-group">
+            <label>Grade</label>
+            <select class="form-control">
+                <option value="">9</option>
+                <option value="">10</option>
+            </select>
+            </div>
+        </div>
+        <div class="col-md-1 pl-1">
+            <div class="form-group">
+            <label>Section</label>
+            <select class="form-control">
+                <option value="">A</option>
+                <option value="">B</option>
+            </select>
+            </div>
+        </div>
+        </div>
+    </form>
+    <table style="width: 100%;">
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Grade</th>
+            <th>Section</th>
+        </tr>
+        <tr>
+            <td>First Name</td>
+            <td>Last Name</td>
+            <td>9</td>
+            <td>A</td>
+        </tr>
+    </table>
+    <table class="table">
+        <thead class="thead-dark">
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">{{ entityType }}'s Name</th>
+            <th scope="col">Gender</th>
+            <th scope="col">Phone Number</th>
+            <th scope="col">Email</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody class="tbody-dark testbfg">
+          <tr *ngFor="let entity of entities; let i = index">
+            <th scope="row" class="center">{{ i+1 }}</th>
+            <td>{{ entity.first_name+' '+entity.middle_name+' '+entity.last_name }}</td>
+            <td>{{ entity.sex }}</td>
+            <td>{{ entity.phone_num }}</td>
+            <td>{{ entity.email }}</td>
+            <td>
+                <button class="btn btn-primary" (click)="onEdit(i)">Edit</button>
+                <button class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+    </table>
+</div>

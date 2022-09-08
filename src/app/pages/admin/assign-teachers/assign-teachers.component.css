@@ -1,0 +1,13 @@
+table.table thead{
+    background-color: #333;
+    color: #eee;
+    text-align: center;
+}
+table.table tbody tr:hover{
+    background-color: #eee;
+    cursor: pointer;
+    box-shadow: 0px 3px 5px 0px rgba(55,55,55,0.1);
+}
+.center{
+    text-align: center;
+}

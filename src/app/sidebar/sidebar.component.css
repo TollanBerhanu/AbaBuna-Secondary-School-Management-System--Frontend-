@@ -1,0 +1,25 @@
+.simple-text{
+    font-weight: bold !important;
+}
+.nav li a{
+    color: #222 !important;
+    transition: 0.2s;
+}
+.nav li a:hover{
+    text-decoration: underline;
+    font-size: 13px;
+}
+
+.admin{
+    background-color: rgb(241, 235, 231) !important; 
+    color: #333;
+}
+.teacher{
+    /* background-color: rgb(109, 204, 187) !important;  */
+    background-color: rgb(242, 243, 247) !important; 
+    color: #333;
+}
+.student{
+    background-color: rgb(228, 238, 229) !important; 
+    color: #333;
+}

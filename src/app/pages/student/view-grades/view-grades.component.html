@@ -1,0 +1,35 @@
+<div class="col-md-14">
+    <div class="card card-user body-panel" *ngFor="let grade of grades">
+        <div class="card-body">
+            <div class="card-header">
+            <h5 class="card-title">Grade {{grade.grade}}</h5>
+            </div>
+            <table class="table" *ngFor="let semester of grade.scores">
+                <thead class="thead-dark">
+                  <tr>
+                    <th scope="col" colspan="7">Semester {{semester.semester}}</th>
+                  </tr>
+                </thead>
+                <thead class="thead-dark marks">
+                  <tr>
+                    <th scope="col">Subject</th>
+                    <th scope="col">Test 1</th>
+                    <th scope="col">Test 2</th>
+                    <th scope="col">Assignment</th>
+                    <th scope="col">Mid Exam</th>
+                    <th scope="col">Final Exam</th>
+                    <th scope="col">Total</th>
+                  </tr>
+                </thead>
+                <tbody class="marks">
+                  <tr *ngFor="let subject of myScores">
+                    <th scope="row">{{ subject.subject }}</th>
+                    <td *ngFor="let score of subject.data">{{ score.s_value }}</td>
+                    <td>{{ subject.total }}</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+              

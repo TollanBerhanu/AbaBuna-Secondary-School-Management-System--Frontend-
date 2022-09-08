@@ -1,0 +1,27 @@
+.schoolyear{
+    width: 45%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+.cardHover-start:hover{
+    box-shadow: 3px 6px 8px 4px rgba(109, 245, 143, 0.5);
+}
+.cardHover-end:hover{
+    box-shadow: 3px 6px 8px 4px rgba(245, 109, 109, 0.4);
+}
+.completeRegistration{
+    width: 30%;
+    /* margin-left: 25%; */
+    cursor: pointer;
+}
+.registrationHover:hover{
+    box-shadow: 3px 6px 8px 4px rgba(109, 152, 245, 0.4);
+}
+.assignClass{
+    width: 60%;
+    margin-left: 5%;
+    cursor: pointer;
+}
+.assignHover:hover{
+    box-shadow: 3px 6px 8px 4px rgba(109, 152, 245, 0.4);
+}

@@ -1,0 +1,48 @@
+.choice-label .choice-input{
+    display: inline;
+}
+.choice-label{
+    margin-left: 50px;
+    font-size: 15px;
+    /* color: #333; */
+    font-weight: bold;
+}
+.choice-input{
+    margin-left: 0;
+}
+.question-label{
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+}
+.header-label{
+    /* color: rgb(40, 111, 243); */
+    color: rgb(228, 33, 43);
+}
+.classes{
+    margin-left: 20px;
+    margin-right: 10px;
+}
+.prev{
+    margin-left: 30px;
+}
+.next{
+    float: right; 
+    margin-right: 30px;
+}
+.add-question{
+    width: 40%;
+    margin-left: 30%;
+    background-color: rgb(91, 153, 207);
+}
+.delete-question{
+    width: 40%;
+    margin-left: 30%;
+    background-color: rgb(240, 37, 37);
+}
+.save-exam{
+    width: 40%;
+    margin-left: 30%;
+    font-size: 16px;
+    color: #333;
+}

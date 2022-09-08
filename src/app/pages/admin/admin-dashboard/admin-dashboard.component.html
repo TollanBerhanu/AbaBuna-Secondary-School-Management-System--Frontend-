@@ -1,0 +1,149 @@
+<!-- <div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+                <button class="btn btn-success">Start School Year</button>
+                <button class="btn btn-danger">End School Year</button>
+                Assign Class
+                Complete Registration
+
+                Generate Schedule
+                Approve Schedule
+                
+
+            </div>
+        </div>
+    </div>
+</div> -->
+<div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6 schoolyear" (click)="beginSchoolYear()" style="width: 40%;">
+      <div class="card card-stats cardHover-start">
+        <div class="card-body">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-book-bookmark text-success"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">School Year: 2021/22 GC</p>
+                <p class="card-title">Begin School Year <br>
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-calendar-o"></i> 2021/22 GC / 2014 EC
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3 col-md-6 col-sm-6 schoolyear" (click)="endSchoolYear()">
+      <div class="card card-stats cardHover-end">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-delivery-fast text-danger"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">School Year: 2021/22 GC</p>
+                <p class="card-title">End School Year <br>
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-calendar-o"></i> 2021/22 GC / 2014 EC
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+
+
+
+    <div class="row">
+    <div class="col-lg-3 col-md-6 col-sm-6 assignClass" (click)="assignClasses()">
+      <div class="card card-stats assignHover">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-check-2 text-primary"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">Assign Class</p>
+                <p class="card-title">Assign Classes To Students
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <!-- <i class="fa fa-refresh"></i> -->
+            <div class="row">
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                    <label>Min Students Per Class<span class="req"></span></label>
+                    <input type="number" class="form-control" placeholder="Min Students" required #min>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <div class="form-group">
+                    <label>Max Students Per Class<span class="req"></span></label>
+                    <input type="number" class="form-control" placeholder="Max Students" required #max>
+                    </div>
+                </div>
+                <div class="col-md-3 pr-1">
+                    <br>
+                    <button class="btn btn-primary" >Assign</button>
+                </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  <!-- </div>
+
+  <div class="row"> -->
+    <div class="col-lg-3 col-md-6 col-sm-6 completeRegistration" (click)="completeRegistration()">
+      <div class="card card-stats registrationHover">
+        <div class="card-body ">
+          <div class="row">
+            <div class="col-5 col-md-4">
+              <div class="icon-big text-center icon-warning">
+                <i class="nc-icon nc-paper text-primary"></i>
+              </div>
+            </div>
+            <div class="col-7 col-md-8">
+              <div class="numbers">
+                <p class="card-category">Registration</p>
+                <p class="card-title">Registration Complete
+                  <p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="card-footer ">
+          <hr>
+          <div class="stats">
+            <i class="fa fa-clock-o"></i> No more registration <br>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>

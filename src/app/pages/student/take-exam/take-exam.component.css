@@ -1,0 +1,45 @@
+.choice-label .choice-input{
+    display: inline;
+}
+.choice-label{
+    margin-left: 80px;
+    font-size: 15px;
+    /* color: #333; */
+    font-weight: bold;
+}
+.choice-input{
+    margin-left: 0;
+}
+.question-label .choice-answer-label{
+    font-size: 15px;
+    color: #333;
+    font-weight: bold;
+}
+.choice-answer-label{
+    margin-left: 30px;
+}
+.header-label{
+    /* color: rgb(40, 111, 243); */
+    color: rgb(228, 33, 43);
+}
+.question-block{
+    margin-left: 20px;
+}
+.start-exam{
+    width: 40%;
+    height: 60px;
+    margin-left: 30%;
+    color: #444;
+    background-color: rgb(102, 187, 226);
+    font-size: 20px;
+}
+.score-message{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(235, 255, 233);
+    /* color: rgb(27, 225, 27); */
+    color: darkgreen;
+    font-size: 30px;
+    text-align: center;
+    font-weight: bold;
+}

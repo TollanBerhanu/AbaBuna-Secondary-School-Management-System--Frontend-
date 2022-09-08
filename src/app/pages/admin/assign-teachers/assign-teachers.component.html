@@ -1,0 +1,112 @@
+<div>
+    <div class="col-md-14">
+        <div class="card card-user body-panel">
+            <div class="card-body">
+                <!-- <form>
+                    <div class="card-header">
+                    <h5 class="card-title">Generate Identification Card</h5>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-2">
+                            <div class="form-group">
+                            <label>ID Type</label>
+                            <select class="form-control">
+                                <option value="">Student</option>
+                                <option value="">Teacher</option>
+                            </select>
+                            </div>
+                        </div>
+                    <div class="col-md-3 pr-1">
+                        <div class="form-group">
+                        <label>First Name</label>
+                        <input type="text" class="form-control" placeholder="First Name">
+                        </div>
+                    </div>
+                    <div class="col-md-3 pl-1">
+                        <div class="form-group">
+                        <label>Last Name</label>
+                        <input type="text" class="form-control" placeholder="Last Name">
+                        </div>
+                    </div>
+                    <div class="col-md-1 pl-1">
+                        <div class="form-group">
+                        <label>Grade</label>
+                        <select class="form-control">
+                            <option value="">9</option>
+                            <option value="">10</option>
+                        </select>
+                        </div>
+                    </div>
+                    <div class="col-md-1 pl-1">
+                        <div class="form-group">
+                        <label>Section</label>
+                        <select class="form-control">
+                            <option value="">A</option>
+                            <option value="">B</option>
+                        </select>
+                        </div>
+                    </div>
+                    </div>
+                </form> -->
+                <br>
+                <table class="table">
+                    <thead class="thead-dark">
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Teacher's Name</th>
+                        <th scope="col">Grade to Teach</th>
+                        <th scope="col">Subject to Teach</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">Assigned</th>
+                      </tr>
+                    </thead>
+                    <tbody class="tbody-dark testbfg">
+                      <tr *ngFor="let teacher of teachers; let i = index">
+                        <!-- <div>
+                        <form (ngSubmit)="onSubmit()" #assignmentForm="ngForm"> -->
+                        <th scope="row" class="center">{{ i+1 }}</th>
+                        <td>{{ teacher.first_name+' '+teacher.middle_name+' '+teacher.last_name }}</td>
+                        <td>
+                            <select class="form-control" (change)="onGradeSelected(grade, i)" #grade>
+                                <option value=""></option>
+                                <option value="9">Grade 9</option>
+                                <option value="10">Grade 10</option>
+                                <option value="11">Grade 11</option>
+                                <option value="12">Grade 12</option>
+                            </select>
+                        </td>
+                        <td>
+                            <select class="form-control" (change)="onSubjectSelected(subject, i)" #subject>
+                                <option value=""></option>
+                                <option value="{{ subject }}" *ngFor="let subject of selectedSubjects[i]">
+                                    {{ subject }}
+                                </option>
+                            </select> 
+                        </td>
+                        <td>
+                            <span *ngFor="let section of selectedSections[i]; let j = index">
+                                <input type="checkbox" class="form-check-input" style="margin-right: 2px;" id="{{section+j}}" value="{{section}}" (change)="onSectionSelected(sectionRef, i)" #sectionRef>
+                                <label for="{{section+j}}">{{ section }}</label>
+                                &nbsp;&nbsp;
+                            </span>
+                        </td>
+                        <td>
+                            <button class="btn btn-success" (click)="onAssign(i)">Assign</button>
+                        </td>
+                        <!-- </form>
+                        </div> -->
+                      </tr>
+                      <tr>
+                        <th scope="col">#</th>
+                        <th scope="col">Teacher's Name</th>
+                        <th scope="col">Grade to Teach</th>
+                        <th scope="col">Subject to Teach</th>
+                        <th scope="col">Section</th>
+                        <th scope="col">Approval</th>
+                      </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

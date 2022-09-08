@@ -1,0 +1,9 @@
+.body-panel{
+    border-radius: 0%;
+    background-color: white;
+    border: 1px solid #dee2e6;
+    border-top: none;
+}
+.dashboard-link{
+    text-transform: capitalize;
+}

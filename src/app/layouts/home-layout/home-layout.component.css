@@ -1,0 +1,38 @@
+div.main-nav ul{
+    float: right;
+    position: absolute;
+    right: 20px;
+    top: 5px;
+    margin: 18px;
+}
+div.main-nav ul li{
+    display: inline;
+    list-style-type: none;
+}
+div.main-nav ul li a{
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: normal;
+    transition: 0.2s;
+}
+div.main-nav ul li a:hover{
+    font-size: 16px;
+    color: cyan;
+}
+.navigation{
+    position: fixed;
+    width: 100%;
+    z-index: 10;
+}
+.title{
+    font-size: 18px;
+    font-weight: bold;
+}
+img.slideshow-image{
+    position: absolute;
+    top: -140px;
+    left: 0px;
+    right: 0px;
+    height: 520px;
+    width: 100%;
+}

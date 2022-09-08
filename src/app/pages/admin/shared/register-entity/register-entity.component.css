@@ -1,0 +1,86 @@
+input.form-check-input{
+    margin-left: 50px;
+    margin-right: 10px;
+}
+img.profile-pic{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 140px;
+    max-height: 160px;
+
+	box-shadow: 1px 3px 5px 1px rgba(0,0,0,0.2);
+}
+div.upload-profile-pic input.upload_photo{
+    position: absolute;
+    margin-top: 20px;
+    margin-left: 50px;
+    width: 140px;
+    height:160px;
+	/* border: 1px solid #000; */
+    opacity: 0;
+    z-index: 1;
+}
+span.img_overlay {
+	position: absolute; 
+    margin-top: 90px;
+    margin-left: 50px;
+	width: 140px;
+    height: 70px;
+
+	background: rgba(0, 0, 0, 0.5);
+	transition: .5s ease;
+	opacity:0;
+	color: white;
+	font-size: 16px;
+	padding: 10px;
+	text-align: center;
+    line-height: 60px;
+}
+div.upload-profile-pic:hover span.img_overlay {
+    opacity: 1;
+}
+
+.add-icon{
+    margin: 5px;
+    padding: 11px;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    cursor: pointer;
+}
+.add-icon:hover{
+    border: 1px solid #555;
+    box-shadow: 1px 3px 5px 1px rgba(55,55,55,0.1);
+}
+span.req:after{
+	content: " * ";
+	font-weight: bolder;
+	font-size: 15px;
+	color: red;
+}
+.help-block{
+    color: red;
+    font-size: 10px;
+}
+/* Angular validators */
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+/* Success / Failed Messages */
+.failed{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 235, 233);
+    color: rgb(225, 95, 95);
+}
+.success{
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(235, 255, 233);
+    /* color: rgb(27, 225, 27); */
+    color: darkgreen;
+}
+.hideGrades{
+    display: none;
+}
